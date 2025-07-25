@@ -9,7 +9,7 @@ export default function ColorConverter() {
         const value = event.target.value;
         setHexColor(value);
 
-        if (value.length >= 7) {
+        if (value.length === 7) {
             if (/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(value)) {
                 const r = parseInt(value.substring(1, 3), 16);
                 const g = parseInt(value.substring(3, 5), 16);
@@ -31,10 +31,12 @@ export default function ColorConverter() {
         <div className='content'>
             <input
                 type="text"
+                value={hexColor}
                 onChange={handleChange}
                 placeholder="#FFFFFF"
                 id='1'
                 name='color'
+                maxLength='7'
             />
             <p className={error ? "error" : ""}>{error ? 'Ошибка!' : rgbColor == '' ? 'RGB(255, 255, 255)' : rgbColor}</p>
         </div>
